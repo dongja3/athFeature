@@ -1,0 +1,25 @@
+{
+  "name": "ath_feature",
+  "version": "1.0.0",
+  "description": "my first mean project",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dongja3/athFeature.git"
+  },
+  "author": "dongja3",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dongja3/athFeature/issues"
+  },
+  "homepage": "https://github.com/dongja3/athFeature#readme",
+
+	"dependencies": {
+		"express": "~4.8.8",
+		"ejs": "~1.0.0",
+		"mongoose": "~3.8.15"
+	}
+}
