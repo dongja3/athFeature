@@ -1,0 +1,31 @@
+<section data-ng-controller="FeatureController">
+	<h1>Create Feature</h1>
+	<!-- The new article form -->
+	<form data-ng-submit="create()" novalidate>
+		<div>
+			<label for="featureId">Feature Id</label>
+			<div>
+				<input type="text" data-ng-model="featureId" id="featureId" placeholder="Fature Id" required>
+			</div>
+		</div>
+		<div>
+			<label for="featureName">Feature Name</label>
+			<div>
+				<input type="text" data-ng-model="featureName" id="featureName" placeholder="Fature Name" required>
+			</div>
+		</div>
+		<div>
+			<label for="qualifier">Qualifier</label>
+			<div>
+				<input type="text" data-ng-model="qualifier" id="qualifier" placeholder="Qualifier Name" required>
+			</div>
+		</div>
+		<div>
+			<input type="submit" value="submit">
+		</div>
+		<!-- The error message element -->
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</section>

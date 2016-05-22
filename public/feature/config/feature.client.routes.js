@@ -5,8 +5,17 @@
 angular.module('feature').config(['$routeProvider',
 	function($routeProvider) {
 		$routeProvider.
+		when('/features',{
+			templateUrl:'feature/views/list-feature.client.view.html'
+		}).
+		when('/features/create',{
+			templateUrl:'feature/views/create-feature.client.view.html'
+		}).
+		when('/feature/:featureId/edit', {
+			templateUrl: 'feature/views/edit-feature.client.view.html'
+		}).
 		when('/', {
-			templateUrl: 'feature/views/feature.client.view.html'
+			templateUrl:'feature/views/feature.client.index.view.html'
 		}).
 		otherwise({
 			redirectTo: '/'

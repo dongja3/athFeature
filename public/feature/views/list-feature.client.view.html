@@ -1,0 +1,19 @@
+<!-- The example view -->
+<section ng-controller="FeatureController" data-ng-init="find()">
+	<!-- If the user is not authenticated show the authentication link -->
+
+		<h1>Feaure List</h1>
+
+		<ul>
+			<!-- The list of article -->
+			<li data-ng-repeat="feature in features">
+				<a data-ng-href="#!/feature/{{feature.featureId}}/edit" data-ng-bind="feature.featureName"></a>
+				<br>
+				<small data-ng-bind="feature.qualifier"></small>
+			</li>
+		</ul>
+		<!-- If there are no articles in the list, suggest the user's create a new article -->
+		<div data-ng-hide="!features || features.length">
+			No features yet, why don't you <a href="/#!/features/create">create one</a>?
+		</div>
+</section>

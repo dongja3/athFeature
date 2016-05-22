@@ -1,0 +1,33 @@
+<section data-ng-controller="FeatureController" data-ng-init="findOne()">
+	<h1>Edit Feature</h1>
+	<!-- The new article form -->
+	<form data-ng-submit="update()" novalidate>
+
+		<div>
+			<label for="featureId">Feature Id</label>
+			<div>
+				<input type="text" data-ng-model="feature.featureId" id="featureId" placeholder="Fature Id" required>
+			</div>
+		</div>
+
+		<div>
+			<label for="featureName">Feature Name</label>
+			<div>
+				<input type="text" data-ng-model="feature.featureName" id="featureName" placeholder="Fature Name" required>
+			</div>
+		</div>
+		<div>
+			<label for="qualifier">Qualifier</label>
+			<div>
+				<input type="text" data-ng-model="feature.qualifier" id="qualifier" placeholder="Qualifier Name" required>
+			</div>
+		</div>
+		<div>
+			<input type="submit" value ="update">
+		</div>
+		<!-- The error message element -->
+		<div data-ng-show="error">
+			<strong data-ng-bind="error"></strong>
+		</div>
+	</form>
+</section>
