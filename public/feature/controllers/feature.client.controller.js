@@ -2,13 +2,9 @@
 'use strict';
 
 // Create the 'example' controller
-angular.module('feature').controller('FeatureController', ['$scope','$routeParams', '$location',
-	function($scope,$routeParams,$location) {
-		$scope.features = [
-			{featureId:'001', featureName: 'Feature-Paint pots', qualifier: 'Collection Office'},
-			{featureId:'002', featureName: 'Feature-Polka dots', qualifier: 'Collection Office'},
-			{featureId:'003', featureName: 'Feature-Pebbles', qualifier: 'Collection Office'}
-		];
+angular.module('feature').controller('FeatureController', ['$scope','$routeParams', '$location','Features',
+	function($scope,$routeParams,$location,Features) {
+		$scope.features=Features.query();
 	  $scope.create = function(){
 			var myFeature ={};
 			myFeature.featureId=this.featureId;

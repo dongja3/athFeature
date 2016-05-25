@@ -1,7 +1,7 @@
 <section data-ng-controller="FeatureController">
 	<h1>Create Feature</h1>
 	<!-- The new article form -->
-	<form data-ng-submit="create()" novalidate>
+	<form data-ng-submit="create()" name='addFeatureForm'>
 		<div>
 			<label for="featureId">Feature Id</label>
 			<div>
@@ -15,13 +15,20 @@
 			</div>
 		</div>
 		<div>
+			<label for="permission">Permission</label>
+			<div>
+				<input type="checkbox" name="permisson" value="View"> View 
+				<input type="checkbox" name="permisson" value="Edit"> Edit
+			</div>
+		</div>
+		<div>
 			<label for="qualifier">Qualifier</label>
 			<div>
 				<input type="text" data-ng-model="qualifier" id="qualifier" placeholder="Qualifier Name" required>
 			</div>
 		</div>
 		<div>
-			<input type="submit" value="submit">
+			<button ng-disabled='!addFeatureForm.$valid'>Submit</button>
 		</div>
 		<!-- The error message element -->
 		<div data-ng-show="error">
