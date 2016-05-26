@@ -3,13 +3,6 @@
 <head>
 	<!-- Use the 'title' property to render a page title  -->
 	<title><%= title %></title>
-</head>
-<body>
-  <div>
-    <a href="/#!/features/create">Create New Feature</a> | <a href="/#!/features">Feature List </a>| ..
-  </div>
-	<!-- Render AngularJS views  -->
-	<section ng-view></section>
 	<!-- Load local libraries -->
 	<script type="text/javascript" src="/lib/angular/angular.js"></script>
 	<script type="text/javascript" src="/lib/angular-route/angular-route.js"></script>
@@ -23,5 +16,24 @@
 
   <!-- Bootstrap AngularJS application -->
   <script type="text/javascript" src="/application.js"></script>
+	<link href="css/bootstrap-combined.min.css" rel="stylesheet">
+</head>
+<body>
+  <div class='container'>
+    <h4>Authoirzation Feature Portal</h4>
+    <div class='navbar navbar-inverse'>
+      <div class='navbar-inner nav-collapse' style="height: auto;">
+        <ul class="nav">
+					<li><a href="/#!/features/create">Create New Feature</a></li>
+	        <li><a href="/#!/features">Feature List </a></li>
+        </ul>
+      </div>
+    </div>
+    <div id='content' class='row-fluid'>
+      <div class='span12 main'>
+					<section ng-view></section>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,38 +1,41 @@
-<section data-ng-controller="FeatureController">
-	<h1>Create Feature</h1>
+<div class="span8" data-ng-controller="FeatureController">
 	<!-- The new article form -->
-	<form data-ng-submit="create()" name='addFeatureForm'>
-		<div>
-			<label for="featureId">Feature Id</label>
-			<div>
-				<input type="text" data-ng-model="featureId" id="featureId" placeholder="Fature Id" required>
+	<form data-ng-submit="create()" name="addFeatureForm" class="form-horizontal">
+	<fieldset>
+		<div class="control-group">
+			<label class="control-label" for="featureId">Feature Id</label>
+			<div  class="controls">
+			  <input type="text" data-ng-model="featureId" id="featureId" placeholder="Fature Id" required>
 			</div>
 		</div>
-		<div>
-			<label for="featureName">Feature Name</label>
-			<div>
+		<div class="control-group">
+			<label class="control-label" for="featureName">Feature Name</label>
+			<div class="controls">
 				<input type="text" data-ng-model="featureName" id="featureName" placeholder="Fature Name" required>
 			</div>
 		</div>
-		<div>
-			<label for="permission">Permission</label>
-			<div>
-				<input type="checkbox" name="permisson" value="View"> View 
+	<div class="control-group">
+			<label class="control-label" for="permission">Permission</label>
+			<div class="controls">
+				<input type="checkbox" name="permisson" value="View"> View
 				<input type="checkbox" name="permisson" value="Edit"> Edit
 			</div>
 		</div>
-		<div>
-			<label for="qualifier">Qualifier</label>
-			<div>
+		<div class="control-group">
+			<label class="control-label" for="qualifier">Qualifier</label>
+			<div class="controls">
 				<input type="text" data-ng-model="qualifier" id="qualifier" placeholder="Qualifier Name" required>
 			</div>
 		</div>
-		<div>
-			<button ng-disabled='!addFeatureForm.$valid'>Submit</button>
+		<div class="control-group">
+		  <div class="controls">
+			  <button ng-disabled='!addFeatureForm.$valid' class="btn btn-primary">Submit</button>
+			</div>
 		</div>
 		<!-- The error message element -->
 		<div data-ng-show="error">
 			<strong data-ng-bind="error"></strong>
 		</div>
+  </fieldset>
 	</form>
-</section>
+</div>

@@ -1,33 +1,37 @@
-<section data-ng-controller="FeatureController" data-ng-init="findOne()">
-	<h1>Edit Feature</h1>
+<div class="span8" data-ng-controller="FeatureController" data-ng-init="findOne()">
 	<!-- The new article form -->
-	<form data-ng-submit="update()" novalidate>
-
-		<div>
-			<label for="featureId">Feature Id</label>
-			<div>
+	<form data-ng-submit="update()" class="form-horizontal">
+<fieldset>
+		<div class="control-group">
+		  <label class="control-label" for="featureId">Feature Id</label>
+			<div class="controls">
 				<input type="text" data-ng-model="feature.featureId" id="featureId" placeholder="Fature Id" required>
 			</div>
 		</div>
 
-		<div>
-			<label for="featureName">Feature Name</label>
-			<div>
+		<div class="control-group">
+			<label class="control-label" for="featureName">Feature Name</label>
+			<div class="controls">
 				<input type="text" data-ng-model="feature.featureName" id="featureName" placeholder="Fature Name" required>
 			</div>
 		</div>
-		<div>
-			<label for="qualifier">Qualifier</label>
-			<div>
+
+		<div class="control-group">
+			<label class="control-label" for="qualifier">Qualifier</label>
+			<div class="controls">
 				<input type="text" data-ng-model="feature.qualifier" id="qualifier" placeholder="Qualifier Name" required>
 			</div>
 		</div>
-		<div>
-			<input type="submit" value ="update">
+
+		<div class="control-group">
+		  <div class="controls">
+			  <input type="submit" value ="update" class="btn btn-primary">
+			</div>
 		</div>
 		<!-- The error message element -->
 		<div data-ng-show="error">
 			<strong data-ng-bind="error"></strong>
 		</div>
+</<fieldset>
 	</form>
-</section>
+</div>
