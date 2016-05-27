@@ -1,11 +1,26 @@
-<div class="span8" data-ng-controller="FeatureController">
+<div class="span8" data-ng-controller="FeatureController" data-ng-init="createInit()">
 	<!-- The new article form -->
 	<form data-ng-submit="create()" name="addFeatureForm" class="form-horizontal">
 	<fieldset>
+		<div class="control-group" >
+			<label class="control-label" for ="orgnization">Orginzation/Domain</label>
+			<div class="controls">
+		    <select ng-model="selectedOrg" ng-options="org.name for org in orginzations" ng-change="changeOrg(selectedOrg)" class="input-small">
+		        <option value="org.id">-- Please Select --</option>
+		    </select>/
+		    <select  ng-model="selectedDomain" ng-options="d.name for d in domains" ng-change="changeDomain(selectedDomain)" class="input-medium"
+		        <option value="d.id">-- Please Select --</option>
+		    </select>
+			</div>
+		</div>
+
 		<div class="control-group">
 			<label class="control-label" for="featureId">Feature Id</label>
 			<div  class="controls">
-			  <input type="text" data-ng-model="featureId" id="featureId" placeholder="Fature Id" required>
+			  <input type="text" data-ng-model="featureId1" id="featureId1" class="input-mini"   readonly required>-
+				<input type="text" data-ng-model="featureId2" id="featureId2" class="input-mini"   readonly required>-
+				<input type="text" data-ng-model="featureId3" id="featureId3" class="input-mini"   required>-
+				<input type="text" data-ng-model="featureId4" id="featureId4" class="input-mini"   required>
 			</div>
 		</div>
 		<div class="control-group">
@@ -17,10 +32,19 @@
 	<div class="control-group">
 			<label class="control-label" for="permission">Permission</label>
 			<div class="controls">
-				<input type="checkbox" name="permisson" value="View"> View
+				<input type="checkbox" ng-model="enablePermission"> Enable Only<br><br>
+			</div>
+
+		</div>
+
+		<div class="control-group" ng-show="!enablePermission">
+			<div class="controls">
+			  <input type="checkbox" name="permisson" value="View"> View
 				<input type="checkbox" name="permisson" value="Edit"> Edit
 			</div>
 		</div>
+
+
 		<div class="control-group">
 			<label class="control-label" for="qualifier">Qualifier</label>
 			<div class="controls">
