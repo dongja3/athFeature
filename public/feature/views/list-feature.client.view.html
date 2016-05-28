@@ -1,14 +1,26 @@
 <!-- The example view -->
 <section ng-controller="FeatureController" data-ng-init="find()">
-	<!-- If the user is not authenticated show the authentication link -->
+	<table class="table table-hover">
+		<tr>
+			<th>Feature ID</th>
+			<th>Feature Name</th>
+			<th>Permission</th>
+			<th>Qualifier</th>
+			<th>Status</th>
+		</tr>
+		<tr data-ng-repeat="feature in features">
+				<td>{{feature.featureId1}}.{{feature.featureId2}}.{{feature.featureId3}}.{{feature.featureId4}}</td>
+				<td><a data-ng-href="#!/feature/{{feature.featureName}}/edit">{{feature.featureName}}</a></td>
+				<td>View:{{feature.permissonView}}, Edit:{{feature.permissonEdit}}</td>
+				<td>
+					<k data-ng-repeat="qualifer in feature.qualifierList">
+						{{qualifer.name}};
+					</k>
+				</td>
+				<td></td>
+			</tr>
+  </table>
 
-		<ul>
-			<!-- The list of article -->
-			<li data-ng-repeat="feature in features">
-				<a data-ng-href="#!/feature/{{feature.featureId}}/edit" data-ng-bind="feature.featureName"></a>
-				<br>
-				<small data-ng-bind="feature.qualifier"></small>
-			</li>
 		</ul>
 		<!-- If there are no articles in the list, suggest the user's create a new article -->
 		<div data-ng-hide="!features || features.length">

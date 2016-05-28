@@ -8,12 +8,9 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 	  $scope.create = function(){
 			var myFeature ={};
 			myFeature = $scope.feature;
-			var qualifiers ={};
-			qualifiers = $scope.qualifierList;
-			console.log('create feature:' + myFeature);
-			console.log('create qualifier:' + qualifiers);
+			console.log(JSON.stringify(myFeature));
 			// $scope.features.push(myFeature);
-			// $location.path('features');
+			$location.path('features');
 		};
 
 		$scope.find = function(){
@@ -23,8 +20,9 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 
 		$scope.createInit=function(){
 			$scope.orginzations=Orgnizations.query();
-			$scope.addQualifier();
 			$scope.feature={};
+			$scope.feature.qualifierList=[];
+			$scope.addQualifier();
 		};
 
 		$scope.changeOrg = function (selectedOrg) {
@@ -37,10 +35,10 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 		};
 
 		$scope.findOne = function() {
-			var featureId = $routeParams.featureId;
+			var featureName = $routeParams.featureName;
 
 			for (var i = 0; i < $scope.features.length; i++) {
-				if(featureId===$scope.features[i].featureId){
+				if(featureName===$scope.features[i].featureName){
 						$scope.feature = $scope.features[i];
 						return;
 				}
@@ -56,21 +54,18 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 			$location.path('features');
 		};
 
-		$scope.qualifierList=[];
 		$scope.addQualifier = function () {
-			$scope.qualifierList.push({
-				name: '',
-				description: ''
-			});
+			var qualifier = {name:'',description:''}
+			$scope.feature.qualifierList.push(qualifier);
 		};
 
 		$scope.deleteQualifier = function(qualifier) {
 			if(!qualifier){
 				return;
 			}
-			for (var i in $scope.qualifierList) {
-					if ($scope.qualifierList[i] === qualifier) {
-							$scope.qualifierList.splice(i, 1);
+			for (var i in $scope.feature.qualifierList) {
+					if ($scope.feature.qualifierList[i] === qualifier) {
+							$scope.feature.qualifierList.splice(i, 1);
 					}
 			}
 		};
