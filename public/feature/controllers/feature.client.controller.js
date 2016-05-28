@@ -11,7 +11,7 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 			myFeature.featureName = this.featureName;
 			myFeature.qualifier = this.qualifier;
 			console.log('create feature:' +myFeature.featureName +':' + myFeature.qualifier);
-			$scope.features.push(myFeature);
+			// $scope.features.push(myFeature);
 			$location.path('features');
 		};
 
@@ -53,13 +53,23 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 			$location.path('features');
 		};
 
-		$scope.showPermission = function(value){
-			if(value==='true'){
-				$scope.permissionShow=true;
-			}else{
-				$scope.permissionShow=false;
-			}
+		$scope.qualifierList=[];
+		$scope.addQualifier = function () {
+			$scope.qualifierList.push({
+				name: '',
+				description: ''
+			});
+		};
 
-		}
+		$scope.deleteQualifier = function(qualifier) {
+			if(!qualifier){
+				return;
+			}
+			for (var i in $scope.qualifierList) {
+					if ($scope.qualifierList[i] === qualifier) {
+							$scope.qualifierList.splice(i, 1);
+					}
+			}
+		};
 	}
 ]);

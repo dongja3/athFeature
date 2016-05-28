@@ -34,7 +34,6 @@
 			<div class="controls">
 				<input type="checkbox" ng-model="enablePermission"> Enable Only<br><br>
 			</div>
-
 		</div>
 
 		<div class="control-group" ng-show="!enablePermission">
@@ -44,21 +43,29 @@
 			</div>
 		</div>
 
-
+   <div ng-repeat="item in qualifierList">
 		<div class="control-group">
-			<label class="control-label" for="qualifier">Qualifier</label>
+			<label class="control-label" for="qualifier">Qualifier name/description</label>
 			<div class="controls">
-				<input type="text" data-ng-model="qualifier" id="qualifier" placeholder="Qualifier Name" required>
+				<input type="text" data-ng-model="item.name" class="input-small" required>/
+				<input type="text" data-ng-model="item.description"  class="input-xlarge" required>
+				<div class="btn" ng-click="deleteQualifier(item)">remove</div>
 			</div>
 		</div>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="Release">Release ID/Date</label>
+		<div class="controls">
+			<input type="text" data-ng-model="releaseId" id="releaseId" class="input-small" required>/
+			<input type="text" data-ng-model="releaseDate" id="releaseDate" required>/
+		</div>
+	</div>
 		<div class="control-group">
 		  <div class="controls">
-			  <button ng-disabled='!addFeatureForm.$valid' class="btn btn-primary">Submit</button>
+				<div class="btn btn-success" ng-click="addQualifier()">Add Qualifer</div>
+			  <button class="btn btn-primary">Submit</button>
 			</div>
-		</div>
-		<!-- The error message element -->
-		<div data-ng-show="error">
-			<strong data-ng-bind="error"></strong>
 		</div>
   </fieldset>
 	</form>
