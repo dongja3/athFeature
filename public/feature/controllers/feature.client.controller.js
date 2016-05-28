@@ -7,12 +7,13 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 	function($scope,$routeParams,$location,Features,Orgnizations) {
 	  $scope.create = function(){
 			var myFeature ={};
-			myFeature.featureId=this.featureId;
-			myFeature.featureName = this.featureName;
-			myFeature.qualifier = this.qualifier;
-			console.log('create feature:' +myFeature.featureName +':' + myFeature.qualifier);
+			myFeature = $scope.feature;
+			var qualifiers ={};
+			qualifiers = $scope.qualifierList;
+			console.log('create feature:' + myFeature);
+			console.log('create qualifier:' + qualifiers);
 			// $scope.features.push(myFeature);
-			$location.path('features');
+			// $location.path('features');
 		};
 
 		$scope.find = function(){
@@ -22,15 +23,17 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 
 		$scope.createInit=function(){
 			$scope.orginzations=Orgnizations.query();
+			$scope.addQualifier();
+			$scope.feature={};
 		};
 
 		$scope.changeOrg = function (selectedOrg) {
 			$scope.domains = selectedOrg.domains;
-			$scope.featureId1=selectedOrg.id;
+			$scope.feature.featureId1=selectedOrg.id;
 		};
 
 		$scope.changeDomain = function (selectedDomain) {
-			$scope.featureId2=selectedDomain.id;
+			$scope.feature.featureId2=selectedDomain.id;
 		};
 
 		$scope.findOne = function() {

@@ -1,6 +1,6 @@
 <div class="span8" data-ng-controller="FeatureController" data-ng-init="createInit()">
 	<!-- The new article form -->
-	<form data-ng-submit="create()" name="addFeatureForm" class="form-horizontal">
+	<form data-ng-submit="create()" name="addFeatureForm" class="form-horizontal" novalidate>
 	<fieldset>
 		<div class="control-group" >
 			<label class="control-label" for ="orgnization">Orginzation/Domain</label>
@@ -17,39 +17,39 @@
 		<div class="control-group">
 			<label class="control-label" for="featureId">Feature Id</label>
 			<div  class="controls">
-			  <input type="text" data-ng-model="featureId1" id="featureId1" class="input-mini"   readonly required>-
-				<input type="text" data-ng-model="featureId2" id="featureId2" class="input-mini"   readonly required>-
-				<input type="text" data-ng-model="featureId3" id="featureId3" class="input-mini"   required>-
-				<input type="text" data-ng-model="featureId4" id="featureId4" class="input-mini"   required>
+			  <input type="text" data-ng-model="feature.featureId1" id="featureId1" class="input-mini"   readonly required>-
+				<input type="text" data-ng-model="feature.featureId2" id="featureId2" class="input-mini"   readonly required>-
+				<input type="text" data-ng-model="feature.featureId3" id="featureId3" class="input-mini"   required>-
+				<input type="text" data-ng-model="feature.featureId4" id="featureId4" class="input-mini"   required>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="featureName">Feature Name</label>
 			<div class="controls">
-				<input type="text" data-ng-model="featureName" id="featureName" placeholder="Fature Name" required>
+				<input type="text" data-ng-model="feature.featureName" id="featureName" placeholder="Fature Name" required>
 			</div>
 		</div>
 	<div class="control-group">
 			<label class="control-label" for="permission">Permission</label>
 			<div class="controls">
-				<input type="checkbox" ng-model="enablePermission"> Enable Only<br><br>
+				<input type="checkbox" ng-model="feature.enablePermission"> Enable Only<br><br>
 			</div>
 		</div>
 
-		<div class="control-group" ng-show="!enablePermission">
+		<div class="control-group" ng-show="!feature.enablePermission">
 			<div class="controls">
-			  <input type="checkbox" name="permisson" value="View"> View
-				<input type="checkbox" name="permisson" value="Edit"> Edit
+			  <input type="checkbox" data-ng-model="feature.permissonView" value="true"> View
+				<input type="checkbox" data-ng-model="feature.permissonEdit" value="true"> Edit
 			</div>
 		</div>
 
-   <div ng-repeat="item in qualifierList">
+   <div ng-repeat="qualifier in qualifierList">
 		<div class="control-group">
 			<label class="control-label" for="qualifier">Qualifier name/description</label>
 			<div class="controls">
-				<input type="text" data-ng-model="item.name" class="input-small" required>/
-				<input type="text" data-ng-model="item.description"  class="input-xlarge" required>
-				<div class="btn" ng-click="deleteQualifier(item)">remove</div>
+				<input type="text" data-ng-model="qualifier.name" class="input-small" required>/
+				<input type="text" data-ng-model="qualifier.description"  class="input-xlarge" required>
+				<div class="btn" ng-click="deleteQualifier(qualifier)">remove</div>
 			</div>
 		</div>
 	</div>
@@ -57,8 +57,8 @@
 	<div class="control-group">
 		<label class="control-label" for="Release">Release ID/Date</label>
 		<div class="controls">
-			<input type="text" data-ng-model="releaseId" id="releaseId" class="input-small" required>/
-			<input type="text" data-ng-model="releaseDate" id="releaseDate" required>/
+			<input type="text" data-ng-model="feature.releaseId" id="releaseId" class="input-small" required>/
+			<input type="text" data-ng-model="feature.releaseDate" id="releaseDate" required>/
 		</div>
 	</div>
 		<div class="control-group">
