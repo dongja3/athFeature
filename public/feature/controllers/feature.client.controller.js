@@ -63,6 +63,22 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 			$location.path('features');
 		};
 
+    $scope.reject=function(){
+      var myFeature ={};
+      myFeature = $scope.feature;
+        $scope.management=true;
+      alert(JSON.stringify(myFeature));
+      $location.path('features');
+    }
+
+    $scope.confirm=function(){
+      var myFeature ={};
+      myFeature = $scope.feature;
+      $scope.management=true;
+      alert(JSON.stringify(myFeature));
+      $location.path('features')
+    }
+
 		$scope.addQualifier = function () {
 			var qualifier = {name:'',description:''}
 			$scope.feature.qualifierList.push(qualifier);

@@ -1,5 +1,7 @@
 <!-- The example view -->
+<input ng-model="query" class="input-block-level" type="text" placeholder="Type filter string here">
 <section ng-controller="FeatureController" data-ng-init="find()">
+
 	<table class="table table-hover">
 		<tr>
 			<th>Feature ID</th>
@@ -8,7 +10,7 @@
 			<th>Qualifier</th>
 			<th>Status</th>
 		</tr>
-		<tr data-ng-repeat="feature in features">
+		<tr data-ng-repeat="feature in features |filter:query">
 				<td>{{feature.featureId1}}.{{feature.featureId2}}.{{feature.featureId3}}.{{feature.featureId4}}</td>
 				<td ng-hide="management"><a data-ng-href="#!/feature/{{feature.featureName}}/edit">{{feature.featureName}}</a></td>
 				<td ng-hide="!management"><a data-ng-href="#!/feature/{{feature.featureName}}/edit?management=true">{{feature.featureName}}</a></td>
