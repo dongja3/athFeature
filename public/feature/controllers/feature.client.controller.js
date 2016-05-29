@@ -15,7 +15,7 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 
 		$scope.find = function(){
 			$scope.features=Features.query();
-			console.log("find method called");
+			$scope.management = $routeParams.management;
 		};
 
 		$scope.createInit=function(){
@@ -35,22 +35,31 @@ angular.module('feature').controller('FeatureController', ['$scope','$routeParam
 		};
 
 		$scope.findOne = function() {
-			var featureName = $routeParams.featureName;
-
-			for (var i = 0; i < $scope.features.length; i++) {
-				if(featureName===$scope.features[i].featureName){
-						$scope.feature = $scope.features[i];
+			var featureName = $routeParams.featureId;
+			if($routeParams.management==='true'){
+				$scope.management=true;
+			}else{
+				$scope.management=false;
+			}
+			var features =Features.query();
+			for (var i = 0; i < features.length; i++) {
+				if(featureName===features[i].featureName){
+						$scope.feature = features[i];
 						return;
 				}
 			}
 			alert("no feature can be found");
+			if($scope.management){
+				$location.path('features?management=true');
+			}
 			$location.path('features');
 		};
 
 		$scope.update = function(){
-			var featureName = this.featureName;
-			var qualifier = this.qualifier;
-			console.log('update:'+featureName +':' + qualifier);
+			var myFeature ={};
+			myFeature = $scope.feature;
+			console.log(JSON.stringify(myFeature));
+			// $scope.features.push(myFeature);
 			$location.path('features');
 		};
 

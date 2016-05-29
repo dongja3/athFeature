@@ -10,7 +10,8 @@
 		</tr>
 		<tr data-ng-repeat="feature in features">
 				<td>{{feature.featureId1}}.{{feature.featureId2}}.{{feature.featureId3}}.{{feature.featureId4}}</td>
-				<td><a data-ng-href="#!/feature/{{feature.featureName}}/edit">{{feature.featureName}}</a></td>
+				<td ng-hide="management"><a data-ng-href="#!/feature/{{feature.featureName}}/edit">{{feature.featureName}}</a></td>
+				<td ng-hide="!management"><a data-ng-href="#!/feature/{{feature.featureName}}/edit?management=true">{{feature.featureName}}</a></td>
 				<td>View:{{feature.permissonView}}, Edit:{{feature.permissonEdit}}</td>
 				<td>
 					<k data-ng-repeat="qualifer in feature.qualifierList">

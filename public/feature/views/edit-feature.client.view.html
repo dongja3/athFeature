@@ -1,37 +1,85 @@
 <div class="span8" data-ng-controller="FeatureController" data-ng-init="findOne()">
 	<!-- The new article form -->
 	<form data-ng-submit="update()" class="form-horizontal">
-<fieldset>
+		<fieldset>
+			<div class="control-group">
+				<label class="control-label" for="featureId">Feature Id</label>
+				<div  class="controls">
+					<input type="text" data-ng-model="feature.featureId1" id="featureId1" class="input-mini"   readonly required>-
+					<input type="text" data-ng-model="feature.featureId2" id="featureId2" class="input-mini"   readonly required>-
+					<input type="text" data-ng-model="feature.featureId3" id="featureId3" class="input-mini"   ng-readonly="management" required>-
+					<input type="text" data-ng-model="feature.featureId4" id="featureId4" class="input-mini"   ng-readonly="management" required>
+				</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="featureName">Feature Name</label>
+				<div class="controls">
+					<input type="text" data-ng-model="feature.featureName" id="featureName" placeholder="Fature Name" ng-readonly="management" required>
+				</div>
+			</div>
 		<div class="control-group">
-		  <label class="control-label" for="featureId">Feature Id</label>
-			<div class="controls">
-				<input type="text" data-ng-model="feature.featureId" id="featureId" placeholder="Fature Id" required>
+				<label class="control-label" for="permission">Permission</label>
+				<div class="controls" ng-if="!management">
+					<input type="checkbox" ng-model="feature.enablePermission" ng-readonly="management"> Enable Only
+				</div>
+				<div class="controls" ng-if="management">
+					<div ng-if="feature.enablePermission"> Enable Only</div>
+					<div ng-if="!feature.enablePermission">
+						<k ng-if="feature.permissonView">View;</k>
+						<k ng-if="feature.permissonEdit">Edit;</k>
+					</div>
+				</div>
+			</div>
+
+			<div class="control-group" ng-show="!feature.enablePermission">
+				<div class="controls" ng-if="!management">
+					<input type="checkbox" data-ng-model="feature.permissonView" value="true"> View
+					<input type="checkbox" data-ng-model="feature.permissonEdit" value="true"> Edit
+				</div>
+
+			</div>
+
+
+		 <div ng-repeat="qualifier in feature.qualifierList">
+			<div class="control-group">
+				<label class="control-label" for="qualifier">Qualifier name/description</label>
+				<div class="controls">
+					<input type="text" data-ng-model="qualifier.name" ng-readonly="management" class="input-small" required>/
+					<input type="text" data-ng-model="qualifier.description"  ng-readonly="management" class="input-xlarge" required>
+					<div class="btn" ng-click="deleteQualifier(qualifier)" ng-if="!management">remove</div>
+				</div>
 			</div>
 		</div>
 
 		<div class="control-group">
-			<label class="control-label" for="featureName">Feature Name</label>
+			<label class="control-label" for="Release">Release ID/Date</label>
 			<div class="controls">
-				<input type="text" data-ng-model="feature.featureName" id="featureName" placeholder="Fature Name" required>
+				<input type="text" data-ng-model="feature.releaseId" id="releaseId" ng-readonly="management" class="input-small" required>/
+				<input type="text" data-ng-model="feature.releaseDate" id="releaseDate" ng-readonly="management" required>
 			</div>
 		</div>
 
-		<div class="control-group">
-			<label class="control-label" for="qualifier">Qualifier</label>
+		<div class="control-group" ng-if="management">
+			<label class="control-label" for="Reject">Reject Reason</label>
 			<div class="controls">
-				<input type="text" data-ng-model="feature.qualifier" id="qualifier" placeholder="Qualifier Name" required>
+				<textarea rows="5" style="width:65%" data-ng-model="feature.rejectReason"></textarea>
 			</div>
 		</div>
 
-		<div class="control-group">
-		  <div class="controls">
-			  <input type="submit" value ="update" class="btn btn-primary">
+		<div class="control-group" ng-if="!management">
+			<div class="controls">
+				<div class="btn btn-success" ng-click="addQualifier()">Add Qualifer</div>
+				<button class="btn btn-primary">Submit</button>
 			</div>
 		</div>
-		<!-- The error message element -->
-		<div data-ng-show="error">
-			<strong data-ng-bind="error"></strong>
+
+		<div class="control-group" ng-if="management">
+			<div class="controls">
+				<div class="btn btn-warning" ng-click="reject(feature)">Reject</div>
+				<div class="btn btn-primary" ng-click="confirm(feature)">Confirm</button>
+			</div>
 		</div>
-</<fieldset>
+
+		</fieldset>
 	</form>
 </div>

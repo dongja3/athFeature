@@ -8,10 +8,16 @@ angular.module('feature').config(['$routeProvider',
 		when('/features',{
 			templateUrl:'feature/views/list-feature.client.view.html'
 		}).
+		when('/features?management=true',{
+			templateUrl:'feature/views/list-feature.client.view.html'
+		}).
 		when('/features/create',{
 			templateUrl:'feature/views/create-feature.client.view.html'
 		}).
 		when('/feature/:featureId/edit', {
+			templateUrl: 'feature/views/edit-feature.client.view.html'
+		}).
+		when('/feature/:featureId/edit?management=true', {
 			templateUrl: 'feature/views/edit-feature.client.view.html'
 		}).
 		when('/', {
